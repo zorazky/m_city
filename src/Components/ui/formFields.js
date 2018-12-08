@@ -19,10 +19,16 @@ const FormField = ({formdata, id, change}) => {
             case('input'):
                 formTemplate = (
                     <div>
-                        <input 
+                        { formdata.showLabel ?
+                            <div className="label_inputs">
+                                {formdata.config.label}
+                            </div>
+                            :null
+                        }
+                        <input
                             {...formdata.config}
                             value={formdata.value}
-                            onChange={(event) => change({event, id})}
+                            onChange={(event)=> change({event,id})}
                         />
                         { showError() }
                     </div>
